@@ -16,7 +16,7 @@ class IndexController extends BaseController
 {
     public function __invoke(FilterRequest $request)
     {
-
+        // Some
         $date = $request->validated();
         $filter = app()->make(PostFilter::class, ['queryParams'=>array_filter($date)]);
 
