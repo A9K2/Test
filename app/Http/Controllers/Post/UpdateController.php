@@ -12,11 +12,11 @@ class UpdateController extends BaseController
 {
    public function __invoke(UpdateRequest $request, Post $post)
    {
-    $date = $request->validated();
-
+    $date = $request->validated();  
+    
     $post = $this->service->update($date, $post);
 
-    return new PostResource($post);
+    return $post instanceof Post ? new PostResource($post) : $post;
     //return redirect()->route('post.show', $post->id);
    }
 }

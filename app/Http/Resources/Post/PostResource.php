@@ -2,6 +2,9 @@
 
 namespace App\Http\Resources\Post;
 
+use App\Http\Resources\Category\CategoryResource;
+use App\Http\Resources\Tag\TagResource;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,7 +21,9 @@ class PostResource extends JsonResource
             'id'=>$this->id,
             'title'=>$this->title,
             'content'=>$this->content,
-            'category_id'=>$this->category_id,
+            'category'=> new CategoryResource($this->category),
+            'category'=> TagResource::collection($this->tags),
+
         ];
     }
 }

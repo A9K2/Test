@@ -16,7 +16,7 @@ class StoreController extends BaseController
     
     $post = $this->service->store($date);
     
-    return new PostResource($post);
+    return $post instanceof Post ? new PostResource($post) : $post;
 
     return redirect()->route('post.index');
    }
